@@ -1,0 +1,64 @@
+Problem: Generate a any graph in google visualization with values from json file.
+
+Solution: use google jsapi  and jquery library. See example below
+
+"""
+Make a interactive Bar graph using google visualization api Example : for 5 json objects in file.
+"""
+
+input json file // contains json array
+<html>
+    <head>
+        <title>Batting Average Score</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+        <!--importing google jsapi-->
+		<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+		<!--importing jquery js-->
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script type="text/javascript">
+            <!--initialize google visualization object and specify package. Here we are developing bar graph so packages:["bar"]-->
+			google.load("visualization", "1.1", {packages:["bar"]});
+			//call the function for reading and displaying graph.Here it's read_json
+            google.setOnLoadCallback(read_json);
+            function read_json() {
+				//call jquery to read json file , our json file name is average.json,it will put all json objects in data array
+				$.getJSON("average.json", function(data) {
+					//to display values on bar convert  the array to data table.
+					var mydata = google.visualization.arrayToDataTable([
+						['Player Name', 'Average Batting Score'],
+						[data[0].batsman, data[0].avg],
+						[data[1].batsman, data[1].avg],
+						[data[2].batsman, data[2].avg],
+						[data[3].batsman, data[3].avg],
+						[data[4].batsman, data[4].avg]
+
+                     ]); 
+                     //set properties of the bar graph
+					 
+              var options = {
+					title: 'Batting average',
+					width: 900,
+					legend: { position: 'none' },
+					chart: { title: 'Batting Average Score',subtitle: 'Played against India' },
+					bars: 'horizontal', //Set horizontal or vertical as per required.
+					axes: {
+						x: { 0: { side: 'top', label: 'Runs Scored'} // Top x-axis.}
+					},
+					bar: { groupWidth: "90%" }
+				};
+            
+				var chart = new google.charts.Bar(document.getElementById('top_x_div'));
+				chart.draw(mydata, options);
+              });
+                     
+          };
+        </script>
+    </head>
+    <body>
+        <div id="top_x_div" style="width: 900px; height: 500px;"></div>
+    </body>
+</html>
+
+
+
+
