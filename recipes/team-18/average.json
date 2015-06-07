@@ -1,0 +1,32 @@
+[
+  {
+    "nom": 8,
+    "batsman": "S Dhawan",
+    "avg": 62.5,
+    "tRuns": 500
+  },
+  {
+    "nom": 39,
+    "batsman": "V Kohli",
+    "avg": 47.59,
+    "tRuns": 1856
+  },
+  {
+    "nom": 14,
+    "batsman": "R Dravid",
+    "avg": 46.57,
+    "tRuns": 652
+  },
+  {
+    "nom": 35,
+    "batsman": "G Gambhir",
+    "avg": 44.74,
+    "tRuns": 1566
+  },
+  {
+    "nom": 6,
+    "batsman": "AT Rayudu",
+    "avg": 44.67,
+    "tRuns": 268
+  }
+]
